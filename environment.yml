@@ -1,0 +1,39 @@
+name: NDST
+channels:
+  - conda-forge
+dependencies:
+  - python=3.7.6
+  - ipython
+  - jupyter
+  - notebook
+  - ipykernel
+  - matplotlib
+  - pyyaml
+  - numpy
+  - scipy
+  - xarray
+  - netcdf4
+  - pandas
+  - geopandas
+  - gdal
+  - fiona
+  - rasterio
+  - r-base
+  - r-gbm
+  - shapely
+  - rtree
+  - pyproj
+  - pyshp
+  - rpy2=2.9.4
+  - openpyxl
+  - xlrd
+  - pytest
+  - pytest-cov
+# - sphinx  # these packages are for building docs, may add later
+# - numpydoc
+# - nbsphinx  
+# - sphinx-copybutton
+# - sphinx_rtd_theme
+# - pipactivat
+# - pip:
+#   - doctr
