@@ -5,60 +5,16 @@ USER root
 RUN sudo apt install ca-certificates
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends ffmpeg && \
     rm -rf /var/lib/apt/lists/*
 
 USER $NB_UID
 
 ENV XDG_CACHE_HOME /home/$NB_USER/.cache/
 
-# System libs
-RUN conda install -y \
-python-wget \
-requests \
-&& conda clean --all -f -y 
+# pull over environment file for conda
+COPY environment.yml /home/jovyan/environment.yml
 
-# Numerical
-RUN conda install -y \
-pandas \
-scipy \
-numpy \
-openblas \
-&& conda clean --all -f -y 
-
-# Geospatial
-RUN conda install -y \
-geopandas \
-gdal \
-&& conda clean --all -f -y 
-
-# Plotting
-RUN conda install -y \
-matplotlib \
-seaborn \
-rasterio \
-rasterstats \ 
-imageio \
-imageio-ffmpeg \
-pyshp \
-&& conda clean --all -f -y 
-
-# Statistics
-RUN conda install -y \
-statsmodels \
-&& conda clean --all -f -y 
-
-# Data - Conda
-RUN conda install -y \
-netcdf4 \
-h5py \
-&& conda clean --all -f -y 
-
-# get the MODFLOW binaries
-RUN curl -L -o linux.zip https://github.com/MODFLOW-USGS/executables/releases/latest/download/linux.zip?raw=true \
-&& mkdir binaries \
-&& unzip linux.zip -d binaries \
-&& rm linux.zip 
+RUN  conda env create -f /home/jovyan/environment.yml
 
 # add binaries to the path
 ENV PATH="./binaries:${PATH}"
@@ -87,12 +43,12 @@ RUN pip install --upgrade ipykernel
 #&& jupyter labextension install jupyterlab-topbar-extension jupyterlab-system-monitor
 
 # get the class materials from github
-RUN git clone --depth 1 https://github.com/jdhughes-usgs/iah2021-brazil-mf6.git /opt/iah2021-brazil-mf6 \
-&& chmod -R 777 /opt/iah2021-brazil-mf6
+#RUN git clone --depth 1 https://github.com/jdhughes-usgs/iah2021-brazil-mf6.git /opt/iah2021-brazil-mf6 \
+#&& chmod -R 777 /opt/iah2021-brazil-mf6
 
-COPY setup_files.py /home/jovyan/setup_files.py
+#COPY setup_files.py /home/jovyan/setup_files.py
 
-ENV PYTHONPATH="${PYTHONPATH}:/opt/iah2021-brazil-mf6/python_packages"
+#ENV PYTHONPATH="${PYTHONPATH}:/opt/iah2021-brazil-mf6/python_packages"
 
 RUN rm -rf XDG_CACHE_HOME/*
 USER $NB_UID
