@@ -1,4 +1,4 @@
-FROM cuahsi/singleuser-base:2021.01.13
+FROM cuahsi/singleuser-base:2022.04.04
 
 USER root
 
