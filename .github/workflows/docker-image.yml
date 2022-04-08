@@ -25,6 +25,6 @@ jobs:
       - name: Build and Push
         uses: docker/build-push-action@v2
         with:
-          context: dockerfiles/
+          context: ./dockerfiles
           push: true
           tags: cuahsi/singleuser-ndst:test
