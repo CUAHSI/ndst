@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
 
-docker build -t cuahsi/singleuser:python3-lab .
+docker build -t cuahsi/singleuser-ndst:1.0 .
 
