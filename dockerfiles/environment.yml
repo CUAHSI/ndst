@@ -22,18 +22,10 @@ dependencies:
   - r-gbm
   - shapely
   - rtree
-  - pyproj
+  - pyproj=2.6.1.post1
   - pyshp
   - rpy2=2.9.4
   - openpyxl
   - xlrd
   - pytest
   - pytest-cov
-# - sphinx  # these packages are for building docs, may add later
-# - numpydoc
-# - nbsphinx  
-# - sphinx-copybutton
-# - sphinx_rtd_theme
-# - pipactivat
-# - pip:
-#   - doctr
