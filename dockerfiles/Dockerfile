@@ -14,7 +14,7 @@ ENV XDG_CACHE_HOME /home/$NB_USER/.cache/
 # pull over environment file for conda
 COPY environment.yml /home/jovyan/environment.yml
 
-RUN mamba env create -f /home/jovyan/environment.yml
+RUN mamba env create -vf /home/jovyan/environment.yml
 
 # add binaries to the path
 ENV PATH="./binaries:${PATH}"
