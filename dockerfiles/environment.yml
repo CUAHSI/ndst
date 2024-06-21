@@ -1,9 +1,10 @@
 name: NDST
 channels:
   - conda-forge
+  - defaults
 dependencies:
   - python=3.10
-  - numpy
+  - numpy=1.24.3
   - gdal
   - scikit-learn=1.2.1  
   - scipy=1.10  
@@ -15,7 +16,7 @@ dependencies:
   - joblib  
   - pytest
   - flopy    
-  - pandas
+  - pandas= 2.0.1
   - pip
   - proj
   - xarray
@@ -27,6 +28,6 @@ dependencies:
   - rasterio>=1.3 
   - descartes  
   - hydrofunctions  
-  - openpyxl
+  - openpyxl  
   - pytest
   - pytest-cov
